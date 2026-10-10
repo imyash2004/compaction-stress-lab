@@ -7,6 +7,7 @@ from the summary. Anthropic and OpenAI both offer this natively as **compaction*
 it: exact values, files, reasons, next steps, and whether the agent still acts correctly. We tested two popular
 small models, **Claude Haiku 5.5** and **GPT-6 Luna**, across **628 runs** in three layers of evidence.
 
+📄 **Article:** [What Compaction Forgets](https://claude.ai/artifact/9FxuhEtazFTvDag4ZHLpp5)
 📊 **Results:** [`findings/`](findings/README.md), with one explained page per layer, every chart and all the data.
 📚 **New here?** [`docs/`](docs/README.md) explains where the data came from, how the code fits together, the real
 bugs the agent fixed, every prompt word for word, and one worked example per layer.
