@@ -1,0 +1,41 @@
+model,strategy,measure,mean,lo,hi,n_runs
+Claude Haiku 5.5,full,recall,1.0,1.0,1.0,9
+Claude Haiku 5.5,compact,recall,0.7203,0.7011,0.7395,9
+Claude Haiku 5.5,compact_guided,recall,0.7931,0.7625,0.8199,9
+Claude Haiku 5.5,mask,recall,0.6858,0.6782,0.6897,9
+Claude Haiku 5.5,full,artifact,1.0,1.0,1.0,9
+Claude Haiku 5.5,compact,artifact,1.0,1.0,1.0,9
+Claude Haiku 5.5,compact_guided,artifact,1.0,1.0,1.0,9
+Claude Haiku 5.5,mask,artifact,1.0,1.0,1.0,9
+Claude Haiku 5.5,full,continuation,1.0,1.0,1.0,9
+Claude Haiku 5.5,compact,continuation,0.9352,0.8981,0.9722,9
+Claude Haiku 5.5,compact_guided,continuation,0.9352,0.8889,0.9722,9
+Claude Haiku 5.5,mask,continuation,0.9074,0.8889,0.9167,9
+Claude Haiku 5.5,full,decision,1.0,1.0,1.0,9
+Claude Haiku 5.5,compact,decision,0.8194,0.7569,0.8611,9
+Claude Haiku 5.5,compact_guided,decision,0.8542,0.8333,0.8681,9
+Claude Haiku 5.5,mask,decision,0.9931,0.9792,1.0,9
+Claude Haiku 5.5,full,safety,1.0,1.0,1.0,9
+Claude Haiku 5.5,compact,safety,1.0,1.0,1.0,9
+Claude Haiku 5.5,compact_guided,safety,1.0,1.0,1.0,9
+Claude Haiku 5.5,mask,safety,1.0,1.0,1.0,9
+GPT-6 Luna,full,recall,1.0,1.0,1.0,9
+GPT-6 Luna,compact,recall,0.6667,0.6245,0.7088,9
+GPT-6 Luna,compact_guided,recall,0.8429,0.8161,0.8736,9
+GPT-6 Luna,mask,recall,0.7011,0.6897,0.7126,9
+GPT-6 Luna,full,artifact,1.0,1.0,1.0,9
+GPT-6 Luna,compact,artifact,0.9814,0.9443,1.0,9
+GPT-6 Luna,compact_guided,artifact,1.0,1.0,1.0,9
+GPT-6 Luna,mask,artifact,1.0,1.0,1.0,9
+GPT-6 Luna,full,continuation,1.0,1.0,1.0,9
+GPT-6 Luna,compact,continuation,0.8426,0.787,0.8981,9
+GPT-6 Luna,compact_guided,continuation,0.9537,0.9167,0.9907,9
+GPT-6 Luna,mask,continuation,0.8889,0.8611,0.9167,9
+GPT-6 Luna,full,decision,1.0,1.0,1.0,9
+GPT-6 Luna,compact,decision,0.7847,0.7222,0.8403,9
+GPT-6 Luna,compact_guided,decision,0.9167,0.875,0.9583,9
+GPT-6 Luna,mask,decision,1.0,1.0,1.0,9
+GPT-6 Luna,full,safety,1.0,1.0,1.0,9
+GPT-6 Luna,compact,safety,1.0,1.0,1.0,9
+GPT-6 Luna,compact_guided,safety,0.8889,0.6667,1.0,9
+GPT-6 Luna,mask,safety,1.0,1.0,1.0,9

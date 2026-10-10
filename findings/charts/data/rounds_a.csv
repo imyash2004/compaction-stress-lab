@@ -1,0 +1,41 @@
+model,strategy,measure,rounds,mean,lo,hi
+Claude Haiku 5.5,full,recall,0,1.0,,
+Claude Haiku 5.5,mask,recall,0,0.6782,,
+Claude Haiku 5.5,compact,recall,1,0.7241,0.6897,0.7586
+Claude Haiku 5.5,compact,recall,2,0.6322,0.5517,0.7241
+Claude Haiku 5.5,compact,recall,3,0.6437,0.5862,0.7241
+Claude Haiku 5.5,compact,recall,4,0.5862,0.4828,0.7586
+Claude Haiku 5.5,compact_guided,recall,1,0.7931,0.7586,0.8276
+Claude Haiku 5.5,compact_guided,recall,2,0.7816,0.7586,0.8276
+Claude Haiku 5.5,compact_guided,recall,3,0.7816,0.7586,0.8276
+Claude Haiku 5.5,compact_guided,recall,4,0.7471,0.6552,0.8966
+GPT-6 Luna,full,recall,0,1.0,,
+GPT-6 Luna,mask,recall,0,0.6897,,
+GPT-6 Luna,compact,recall,1,0.6667,0.6207,0.7241
+GPT-6 Luna,compact,recall,2,0.4828,0.4138,0.5862
+GPT-6 Luna,compact,recall,3,0.2989,0.1379,0.4483
+GPT-6 Luna,compact,recall,4,0.2299,0.2069,0.2414
+GPT-6 Luna,compact_guided,recall,1,0.8046,0.7931,0.8276
+GPT-6 Luna,compact_guided,recall,2,0.7241,0.6897,0.7931
+GPT-6 Luna,compact_guided,recall,3,0.6437,0.5517,0.6897
+GPT-6 Luna,compact_guided,recall,4,0.5747,0.5172,0.6207
+Claude Haiku 5.5,full,decision,0,1.0,,
+Claude Haiku 5.5,mask,decision,0,1.0,,
+Claude Haiku 5.5,compact,decision,1,0.8542,0.8125,0.875
+Claude Haiku 5.5,compact,decision,2,0.6875,0.5625,0.75
+Claude Haiku 5.5,compact,decision,3,0.6458,0.5625,0.6875
+Claude Haiku 5.5,compact,decision,4,0.6458,0.5,0.75
+Claude Haiku 5.5,compact_guided,decision,1,0.875,0.875,0.875
+Claude Haiku 5.5,compact_guided,decision,2,0.875,0.875,0.875
+Claude Haiku 5.5,compact_guided,decision,3,0.875,0.875,0.875
+Claude Haiku 5.5,compact_guided,decision,4,0.7708,0.6875,0.875
+GPT-6 Luna,full,decision,0,1.0,,
+GPT-6 Luna,mask,decision,0,1.0,,
+GPT-6 Luna,compact,decision,1,0.7708,0.6875,0.875
+GPT-6 Luna,compact,decision,2,0.3958,0.125,0.6875
+GPT-6 Luna,compact,decision,3,0.25,0.125,0.375
+GPT-6 Luna,compact,decision,4,0.25,0.125,0.375
+GPT-6 Luna,compact_guided,decision,1,0.9167,0.8125,1.0
+GPT-6 Luna,compact_guided,decision,2,0.9167,0.875,1.0
+GPT-6 Luna,compact_guided,decision,3,0.875,0.875,0.875
+GPT-6 Luna,compact_guided,decision,4,0.875,0.875,0.875

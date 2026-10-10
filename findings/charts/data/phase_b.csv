@@ -1,0 +1,33 @@
+model,strategy,phase,mean,lo,hi,n
+Claude Haiku 5.5,full,P1,1.0,0.9011,1.0,35
+Claude Haiku 5.5,compact,P1,0.2,0.1004,0.3589,35
+Claude Haiku 5.5,compact_guided,P1,0.4,0.2555,0.5643,35
+Claude Haiku 5.5,mask,P1,0.1714,0.081,0.3268,35
+Claude Haiku 5.5,full,P2,1.0,0.8897,1.0,31
+Claude Haiku 5.5,compact,P2,0.1613,0.0709,0.3263,31
+Claude Haiku 5.5,compact_guided,P2,0.6129,0.4382,0.7627,31
+Claude Haiku 5.5,mask,P2,0.4516,0.2916,0.6223,31
+Claude Haiku 5.5,full,P3,1.0,0.883,1.0,29
+Claude Haiku 5.5,compact,P3,0.1034,0.0358,0.2639,29
+Claude Haiku 5.5,compact_guided,P3,0.2759,0.147,0.4572,29
+Claude Haiku 5.5,mask,P3,0.4138,0.2551,0.5926,29
+Claude Haiku 5.5,full,P4,1.0,0.8668,1.0,25
+Claude Haiku 5.5,compact,P4,0.32,0.172,0.5159,25
+Claude Haiku 5.5,compact_guided,P4,0.68,0.4841,0.828,25
+Claude Haiku 5.5,mask,P4,0.48,0.3003,0.665,25
+GPT-6 Luna,full,P1,1.0,0.9011,1.0,35
+GPT-6 Luna,compact,P1,0.1429,0.0626,0.2938,35
+GPT-6 Luna,compact_guided,P1,0.2857,0.1633,0.4506,35
+GPT-6 Luna,mask,P1,0.3714,0.2317,0.5366,35
+GPT-6 Luna,full,P2,1.0,0.8897,1.0,31
+GPT-6 Luna,compact,P2,0.2581,0.137,0.4325,31
+GPT-6 Luna,compact_guided,P2,0.5161,0.3484,0.6803,31
+GPT-6 Luna,mask,P2,0.6452,0.4695,0.7888,31
+GPT-6 Luna,full,P3,1.0,0.883,1.0,29
+GPT-6 Luna,compact,P3,0.1724,0.076,0.3455,29
+GPT-6 Luna,compact_guided,P3,0.3448,0.1994,0.5266,29
+GPT-6 Luna,mask,P3,0.4138,0.2551,0.5926,29
+GPT-6 Luna,full,P4,0.96,0.8046,0.9929,25
+GPT-6 Luna,compact,P4,0.24,0.115,0.4343,25
+GPT-6 Luna,compact_guided,P4,0.52,0.335,0.6997,25
+GPT-6 Luna,mask,P4,0.64,0.4452,0.7975,25

@@ -1,0 +1,25 @@
+model,strategy,bucket,mean,lo,hi,n_runs
+Claude Haiku 5.5,full,light,1.0,1.0,1.0,3
+Claude Haiku 5.5,compact,light,0.6897,0.6897,0.6897,3
+Claude Haiku 5.5,compact_guided,light,0.7931,0.6897,0.8621,3
+Claude Haiku 5.5,mask,light,0.6897,0.6897,0.6897,3
+Claude Haiku 5.5,full,heavy,1.0,1.0,1.0,3
+Claude Haiku 5.5,compact,heavy,0.7241,0.6897,0.7586,3
+Claude Haiku 5.5,compact_guided,heavy,0.7931,0.7586,0.8276,3
+Claude Haiku 5.5,mask,heavy,0.6782,0.6552,0.6897,3
+Claude Haiku 5.5,full,extreme,1.0,1.0,1.0,3
+Claude Haiku 5.5,compact,extreme,0.7471,0.7241,0.7586,3
+Claude Haiku 5.5,compact_guided,extreme,0.7931,0.7931,0.7931,3
+Claude Haiku 5.5,mask,extreme,0.6897,0.6897,0.6897,3
+GPT-6 Luna,full,light,1.0,1.0,1.0,3
+GPT-6 Luna,compact,light,0.6437,0.5862,0.7241,3
+GPT-6 Luna,compact_guided,light,0.8851,0.8276,0.931,3
+GPT-6 Luna,mask,light,0.7241,0.7241,0.7241,3
+GPT-6 Luna,full,heavy,1.0,1.0,1.0,3
+GPT-6 Luna,compact,heavy,0.6667,0.6207,0.7241,3
+GPT-6 Luna,compact_guided,heavy,0.8046,0.7931,0.8276,3
+GPT-6 Luna,mask,heavy,0.6897,0.6897,0.6897,3
+GPT-6 Luna,full,extreme,1.0,1.0,1.0,3
+GPT-6 Luna,compact,extreme,0.6897,0.5862,0.7586,3
+GPT-6 Luna,compact_guided,extreme,0.8391,0.8276,0.8621,3
+GPT-6 Luna,mask,extreme,0.6897,0.6897,0.6897,3

@@ -1,0 +1,49 @@
+model,strategy,outcome,count,share
+Claude Haiku 5.5,full,CORRECT,261,1.0
+Claude Haiku 5.5,full,UNKNOWN,0,0.0
+Claude Haiku 5.5,full,STALE,0,0.0
+Claude Haiku 5.5,full,DECOY,0,0.0
+Claude Haiku 5.5,full,INVENTED,0,0.0
+Claude Haiku 5.5,full,OTHER_WRONG,0,0.0
+Claude Haiku 5.5,compact,CORRECT,350,0.6705
+Claude Haiku 5.5,compact,UNKNOWN,154,0.295
+Claude Haiku 5.5,compact,STALE,2,0.0038
+Claude Haiku 5.5,compact,DECOY,0,0.0
+Claude Haiku 5.5,compact,INVENTED,3,0.0057
+Claude Haiku 5.5,compact,OTHER_WRONG,13,0.0249
+Claude Haiku 5.5,compact_guided,CORRECT,408,0.7816
+Claude Haiku 5.5,compact_guided,UNKNOWN,102,0.1954
+Claude Haiku 5.5,compact_guided,STALE,3,0.0057
+Claude Haiku 5.5,compact_guided,DECOY,0,0.0
+Claude Haiku 5.5,compact_guided,INVENTED,3,0.0057
+Claude Haiku 5.5,compact_guided,OTHER_WRONG,6,0.0115
+Claude Haiku 5.5,mask,CORRECT,179,0.6858
+Claude Haiku 5.5,mask,UNKNOWN,82,0.3142
+Claude Haiku 5.5,mask,STALE,0,0.0
+Claude Haiku 5.5,mask,DECOY,0,0.0
+Claude Haiku 5.5,mask,INVENTED,0,0.0
+Claude Haiku 5.5,mask,OTHER_WRONG,0,0.0
+GPT-6 Luna,full,CORRECT,261,1.0
+GPT-6 Luna,full,UNKNOWN,0,0.0
+GPT-6 Luna,full,STALE,0,0.0
+GPT-6 Luna,full,DECOY,0,0.0
+GPT-6 Luna,full,INVENTED,0,0.0
+GPT-6 Luna,full,OTHER_WRONG,0,0.0
+GPT-6 Luna,compact,CORRECT,262,0.5019
+GPT-6 Luna,compact,UNKNOWN,250,0.4789
+GPT-6 Luna,compact,STALE,5,0.0096
+GPT-6 Luna,compact,DECOY,2,0.0038
+GPT-6 Luna,compact,INVENTED,3,0.0057
+GPT-6 Luna,compact,OTHER_WRONG,0,0.0
+GPT-6 Luna,compact_guided,CORRECT,389,0.7452
+GPT-6 Luna,compact_guided,UNKNOWN,127,0.2433
+GPT-6 Luna,compact_guided,STALE,1,0.0019
+GPT-6 Luna,compact_guided,DECOY,1,0.0019
+GPT-6 Luna,compact_guided,INVENTED,2,0.0038
+GPT-6 Luna,compact_guided,OTHER_WRONG,2,0.0038
+GPT-6 Luna,mask,CORRECT,183,0.7011
+GPT-6 Luna,mask,UNKNOWN,78,0.2989
+GPT-6 Luna,mask,STALE,0,0.0
+GPT-6 Luna,mask,DECOY,0,0.0
+GPT-6 Luna,mask,INVENTED,0,0.0
+GPT-6 Luna,mask,OTHER_WRONG,0,0.0

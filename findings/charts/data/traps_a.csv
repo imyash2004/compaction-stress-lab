@@ -1,0 +1,113 @@
+model,strategy,trap,trap_name,mean,lo,hi,n
+Claude Haiku 5.5,full,OVR,overwritten value,1.0,0.9493,1.0,72
+Claude Haiku 5.5,full,DEC,near-miss decoy,1.0,0.974,1.0,144
+Claude Haiku 5.5,full,BUR,buried in long output,1.0,0.9336,1.0,54
+Claude Haiku 5.5,full,RUN,file vs runtime override,1.0,0.8241,1.0,18
+Claude Haiku 5.5,full,REV,revoked value,1.0,0.7008,1.0,9
+Claude Haiku 5.5,full,NEG,do-NOT rule,1.0,0.8754,1.0,27
+Claude Haiku 5.5,full,REJ,rejected approach,1.0,0.8754,1.0,27
+Claude Haiku 5.5,full,FIX,failed then fixed,1.0,0.7008,1.0,9
+Claude Haiku 5.5,full,FLK,flaky repeated run,1.0,0.7008,1.0,9
+Claude Haiku 5.5,full,SIL,silent detail,1.0,0.8754,1.0,27
+Claude Haiku 5.5,full,HOP,multi-hop,1.0,0.7008,1.0,9
+Claude Haiku 5.5,full,USR,user-stated (control),1.0,0.7008,1.0,9
+Claude Haiku 5.5,full,OID,opaque identifier,1.0,0.9036,1.0,36
+Claude Haiku 5.5,full,POST,changed after earlier compaction,1.0,0.7008,1.0,9
+Claude Haiku 5.5,compact,OVR,overwritten value,1.0,0.9493,1.0,72
+Claude Haiku 5.5,compact,DEC,near-miss decoy,0.7222,0.644,0.7889,144
+Claude Haiku 5.5,compact,BUR,buried in long output,0.4444,0.32,0.5762,54
+Claude Haiku 5.5,compact,RUN,file vs runtime override,0.5556,0.3372,0.7544,18
+Claude Haiku 5.5,compact,REV,revoked value,1.0,0.7008,1.0,9
+Claude Haiku 5.5,compact,NEG,do-NOT rule,0.963,0.8172,0.9934,27
+Claude Haiku 5.5,compact,REJ,rejected approach,1.0,0.8754,1.0,27
+Claude Haiku 5.5,compact,FIX,failed then fixed,1.0,0.7008,1.0,9
+Claude Haiku 5.5,compact,FLK,flaky repeated run,0.0,0.0,0.2992,9
+Claude Haiku 5.5,compact,SIL,silent detail,0.0,0.0,0.1246,27
+Claude Haiku 5.5,compact,HOP,multi-hop,0.0,0.0,0.2992,9
+Claude Haiku 5.5,compact,USR,user-stated (control),0.8889,0.565,0.9801,9
+Claude Haiku 5.5,compact,OID,opaque identifier,0.5,0.3447,0.6553,36
+Claude Haiku 5.5,compact,POST,changed after earlier compaction,1.0,0.7008,1.0,9
+Claude Haiku 5.5,compact_guided,OVR,overwritten value,0.9722,0.9043,0.9923,72
+Claude Haiku 5.5,compact_guided,DEC,near-miss decoy,0.7708,0.6957,0.8319,144
+Claude Haiku 5.5,compact_guided,BUR,buried in long output,0.6852,0.5526,0.7932,54
+Claude Haiku 5.5,compact_guided,RUN,file vs runtime override,0.7222,0.4913,0.875,18
+Claude Haiku 5.5,compact_guided,REV,revoked value,1.0,0.7008,1.0,9
+Claude Haiku 5.5,compact_guided,NEG,do-NOT rule,0.9259,0.7663,0.9794,27
+Claude Haiku 5.5,compact_guided,REJ,rejected approach,1.0,0.8754,1.0,27
+Claude Haiku 5.5,compact_guided,FIX,failed then fixed,1.0,0.7008,1.0,9
+Claude Haiku 5.5,compact_guided,FLK,flaky repeated run,0.5556,0.2666,0.8112,9
+Claude Haiku 5.5,compact_guided,SIL,silent detail,0.4074,0.2451,0.5927,27
+Claude Haiku 5.5,compact_guided,HOP,multi-hop,0.1111,0.0199,0.435,9
+Claude Haiku 5.5,compact_guided,USR,user-stated (control),0.6667,0.3542,0.8794,9
+Claude Haiku 5.5,compact_guided,OID,opaque identifier,0.8056,0.6497,0.9025,36
+Claude Haiku 5.5,compact_guided,POST,changed after earlier compaction,1.0,0.7008,1.0,9
+Claude Haiku 5.5,mask,OVR,overwritten value,0.9861,0.9254,0.9975,72
+Claude Haiku 5.5,mask,DEC,near-miss decoy,0.75,0.6734,0.8136,144
+Claude Haiku 5.5,mask,BUR,buried in long output,0.5,0.3711,0.6289,54
+Claude Haiku 5.5,mask,RUN,file vs runtime override,1.0,0.8241,1.0,18
+Claude Haiku 5.5,mask,REV,revoked value,1.0,0.7008,1.0,9
+Claude Haiku 5.5,mask,NEG,do-NOT rule,0.3333,0.1864,0.5218,27
+Claude Haiku 5.5,mask,REJ,rejected approach,1.0,0.8754,1.0,27
+Claude Haiku 5.5,mask,FIX,failed then fixed,1.0,0.7008,1.0,9
+Claude Haiku 5.5,mask,FLK,flaky repeated run,0.0,0.0,0.2992,9
+Claude Haiku 5.5,mask,SIL,silent detail,0.0,0.0,0.1246,27
+Claude Haiku 5.5,mask,HOP,multi-hop,0.0,0.0,0.2992,9
+Claude Haiku 5.5,mask,USR,user-stated (control),1.0,0.7008,1.0,9
+Claude Haiku 5.5,mask,OID,opaque identifier,0.5,0.3447,0.6553,36
+Claude Haiku 5.5,mask,POST,changed after earlier compaction,1.0,0.7008,1.0,9
+GPT-6 Luna,full,OVR,overwritten value,1.0,0.9493,1.0,72
+GPT-6 Luna,full,DEC,near-miss decoy,1.0,0.974,1.0,144
+GPT-6 Luna,full,BUR,buried in long output,1.0,0.9336,1.0,54
+GPT-6 Luna,full,RUN,file vs runtime override,1.0,0.8241,1.0,18
+GPT-6 Luna,full,REV,revoked value,1.0,0.7008,1.0,9
+GPT-6 Luna,full,NEG,do-NOT rule,1.0,0.8754,1.0,27
+GPT-6 Luna,full,REJ,rejected approach,1.0,0.8754,1.0,27
+GPT-6 Luna,full,FIX,failed then fixed,1.0,0.7008,1.0,9
+GPT-6 Luna,full,FLK,flaky repeated run,1.0,0.7008,1.0,9
+GPT-6 Luna,full,SIL,silent detail,1.0,0.8754,1.0,27
+GPT-6 Luna,full,HOP,multi-hop,1.0,0.7008,1.0,9
+GPT-6 Luna,full,USR,user-stated (control),1.0,0.7008,1.0,9
+GPT-6 Luna,full,OID,opaque identifier,1.0,0.9036,1.0,36
+GPT-6 Luna,full,POST,changed after earlier compaction,1.0,0.7008,1.0,9
+GPT-6 Luna,compact,OVR,overwritten value,0.8472,0.7468,0.9125,72
+GPT-6 Luna,compact,DEC,near-miss decoy,0.6389,0.5578,0.7128,144
+GPT-6 Luna,compact,BUR,buried in long output,0.3704,0.2542,0.5037,54
+GPT-6 Luna,compact,RUN,file vs runtime override,0.4444,0.2456,0.6628,18
+GPT-6 Luna,compact,REV,revoked value,0.8889,0.565,0.9801,9
+GPT-6 Luna,compact,NEG,do-NOT rule,1.0,0.8754,1.0,27
+GPT-6 Luna,compact,REJ,rejected approach,0.963,0.8172,0.9934,27
+GPT-6 Luna,compact,FIX,failed then fixed,0.7778,0.4526,0.9368,9
+GPT-6 Luna,compact,FLK,flaky repeated run,0.4444,0.1888,0.7334,9
+GPT-6 Luna,compact,SIL,silent detail,0.0,0.0,0.1246,27
+GPT-6 Luna,compact,HOP,multi-hop,0.0,0.0,0.2992,9
+GPT-6 Luna,compact,USR,user-stated (control),1.0,0.7008,1.0,9
+GPT-6 Luna,compact,OID,opaque identifier,0.3611,0.2248,0.5243,36
+GPT-6 Luna,compact,POST,changed after earlier compaction,1.0,0.7008,1.0,9
+GPT-6 Luna,compact_guided,OVR,overwritten value,0.9583,0.8845,0.9857,72
+GPT-6 Luna,compact_guided,DEC,near-miss decoy,0.8472,0.7795,0.8969,144
+GPT-6 Luna,compact_guided,BUR,buried in long output,0.6852,0.5526,0.7932,54
+GPT-6 Luna,compact_guided,RUN,file vs runtime override,0.7778,0.5478,0.91,18
+GPT-6 Luna,compact_guided,REV,revoked value,1.0,0.7008,1.0,9
+GPT-6 Luna,compact_guided,NEG,do-NOT rule,1.0,0.8754,1.0,27
+GPT-6 Luna,compact_guided,REJ,rejected approach,1.0,0.8754,1.0,27
+GPT-6 Luna,compact_guided,FIX,failed then fixed,1.0,0.7008,1.0,9
+GPT-6 Luna,compact_guided,FLK,flaky repeated run,1.0,0.7008,1.0,9
+GPT-6 Luna,compact_guided,SIL,silent detail,0.3704,0.2153,0.5577,27
+GPT-6 Luna,compact_guided,HOP,multi-hop,0.1111,0.0199,0.435,9
+GPT-6 Luna,compact_guided,USR,user-stated (control),1.0,0.7008,1.0,9
+GPT-6 Luna,compact_guided,OID,opaque identifier,0.6389,0.4757,0.7752,36
+GPT-6 Luna,compact_guided,POST,changed after earlier compaction,1.0,0.7008,1.0,9
+GPT-6 Luna,mask,OVR,overwritten value,1.0,0.9493,1.0,72
+GPT-6 Luna,mask,DEC,near-miss decoy,0.7708,0.6957,0.8319,144
+GPT-6 Luna,mask,BUR,buried in long output,0.5,0.3711,0.6289,54
+GPT-6 Luna,mask,RUN,file vs runtime override,1.0,0.8241,1.0,18
+GPT-6 Luna,mask,REV,revoked value,1.0,0.7008,1.0,9
+GPT-6 Luna,mask,NEG,do-NOT rule,0.3333,0.1864,0.5218,27
+GPT-6 Luna,mask,REJ,rejected approach,1.0,0.8754,1.0,27
+GPT-6 Luna,mask,FIX,failed then fixed,1.0,0.7008,1.0,9
+GPT-6 Luna,mask,FLK,flaky repeated run,0.0,0.0,0.2992,9
+GPT-6 Luna,mask,SIL,silent detail,0.0,0.0,0.1246,27
+GPT-6 Luna,mask,HOP,multi-hop,0.0,0.0,0.2992,9
+GPT-6 Luna,mask,USR,user-stated (control),1.0,0.7008,1.0,9
+GPT-6 Luna,mask,OID,opaque identifier,0.5,0.3447,0.6553,36
+GPT-6 Luna,mask,POST,changed after earlier compaction,1.0,0.7008,1.0,9
