@@ -226,3 +226,8 @@ cp .env.example .env          # fill in ANTHROPIC_API_KEY, AZURE_OPENAI_ENDPOINT
 - **Live tasks:** [SWE-bench Verified](https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified).
 - **Probe design** builds on Factory's
   [*Evaluating Context Compression for AI Agents*](https://factory.com/news/evaluating-compression).
+
+## License
+
+Code and documentation: [MIT](LICENSE). The files in [`inputs/`](inputs/README.md) keep the licenses of their sources
+(CC-BY-4.0 for the real sessions; each project's own license for the SWE-bench issue texts and test patches).

@@ -263,7 +263,7 @@ about; every chart has its numbers next to it.
 | [`layer1-lab.md`](layer1-lab.md) | **Layer 1, the controlled lab.** Every measure after one compaction, the 1–4 compaction curve, noise volume, trap types, salience, honesty, and every flagged rollout plan with its hand-review verdict. |
 | [`layer2-real-sessions.md`](layer2-real-sessions.md) | **Layer 2, 12 real recorded agent sessions.** The session list, every measure, the 1–4 compaction curve, session length, honesty. |
 | [`layer3-live-agent.md`](layer3-live-agent.md) | **Layer 3, the live agent on 10 SWE-bench bugs.** The bug list (issue + PR), results at three compaction pressures, and outcomes per bug. |
-| [`charts/`](charts/) | Every chart as PNG (for slides and posts) and SVG, with the plotted numbers as CSV in `charts/data/`. See [`charts/index.md`](charts/index.md). |
+| [`charts/`](charts/) | Every chart as PNG and SVG, with the plotted numbers as CSV in `charts/data/`. See [`charts/index.md`](charts/index.md). |
 | [`data/summary.json`](data/summary.json) | Every aggregate number: means, 95% intervals and counts, per layer, model, strategy and number of compactions. |
 | [`data/facts_by_round.json`](data/facts_by_round.json) | Layer 1: per fact, how often it was recalled after 0–4 compactions. |
 | [`data/safety_adjudication.json`](data/safety_adjudication.json) | The hand-review verdict for every rollout plan the rule checker flagged. |
