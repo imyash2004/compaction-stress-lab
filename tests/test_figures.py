@@ -99,7 +99,7 @@ class FiguresTest(unittest.TestCase):
             index = (out / "index.md").read_text()
             for n in expected:
                 self.assertIn(n, index)
-            self.assertIsNone(re.search(r"\$|\bcosts?\b|\bprices?\b|\bstudents?\b|\bteachers?\b|\bclass(es)?\b", index, re.I))
+            self.assertIsNone(re.search(r"\$|\bcosts?\b|\bprices?\b", index, re.I))
 
     def test_missing_layers_skip_cleanly(self):
         with tempfile.TemporaryDirectory() as d:

@@ -8,7 +8,7 @@
  "strategy_names": {
   "full": "Full history",
   "mask": "Drop old tool outputs",
-  "compact": "Native compaction",
+  "compact": "Default compaction",
   "compact_guided": "Compaction + keep-exact instructions"
  },
  "noises": [

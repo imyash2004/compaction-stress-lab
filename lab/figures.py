@@ -56,9 +56,9 @@ PLOT_ORDER = ["full", "compact", "compact_guided", "mask"]
 COMPACTION = ["compact", "compact_guided"]
 STRAT_COLOR = {"full": SERIES[2], "mask": SERIES[3], "compact": SERIES[1], "compact_guided": SERIES[0]}
 LINE_REF_COLOR = {"full": SERIES[2], "mask": MUTED}
-STRAT_NAME = {"full": "Full history", "mask": "Drop old tool outputs", "compact": "Native compaction",
+STRAT_NAME = {"full": "Full history", "mask": "Drop old tool outputs", "compact": "Default compaction",
               "compact_guided": "Compaction + keep-exact instructions"}
-STRAT_SHORT = {"full": "Full history", "mask": "Drop old tool outputs", "compact": "Native compaction",
+STRAT_SHORT = {"full": "Full history", "mask": "Drop old tool outputs", "compact": "Default compaction",
                "compact_guided": "Compaction + keep-exact"}
 
 OUTCOMES = ["CORRECT", "UNKNOWN", "STALE", "DECOY", "INVENTED", "OTHER_WRONG"]
@@ -561,7 +561,7 @@ def size(S: dict, layer: str, out: Path):
         return (sz[m].get(s, {}).get(b) or {}).get("recall") or {}
     parts = [f"{_short(S, m)} " + " → ".join(_pc(_m(val(m, 'compact', b))) for b in buckets) for m in models]
     what = "noise volume" if layer == "a" else "session length"
-    sub = f"Native compaction recall from {SIZE_NAME[buckets[0]].lower()} to {SIZE_NAME[buckets[-1]].lower()}: " \
+    sub = f"Default compaction recall from {SIZE_NAME[buckets[0]].lower()} to {SIZE_NAME[buckets[-1]].lower()}: " \
           + "; ".join(parts) + ". Keep-exact: " + "; ".join(
               f"{_short(S, m)} " + " → ".join(_pc(_m(val(m, 'compact_guided', b))) for b in buckets) for m in models) + "."
     cells = [val(m, s, b) for m in models for s in strats for b in buckets]
@@ -887,7 +887,7 @@ def _cond_name(c: str, short: bool = True) -> str:
     if c == "none":
         return "No compaction"
     s, _, th = c.partition("@")
-    base = {"compact": "Native compaction", "compact_guided": "Keep-exact compaction"}.get(s, s)
+    base = {"compact": "Default compaction", "compact_guided": "Keep-exact compaction"}.get(s, s)
     if th.isdigit():
         n = int(th)
         return f"{base} · {n // 1000}k" if n % 1000 == 0 else f"{base} · {n:,}"
@@ -919,7 +919,7 @@ def live(S: dict, out: Path):
     strat_of = {c: _cond_strategy(c) for c in conds}
     leg_strats = [s for s in PLOT_ORDER if s in set(strat_of.values())]
     legend = [(Patch(facecolor=STRAT_COLOR[s], edgecolor="none"),
-               {"full": "No compaction", "compact": "Native compaction",
+               {"full": "No compaction", "compact": "Default compaction",
                 "compact_guided": "Compaction + keep-exact instructions"}[s]) for s in leg_strats]
     res = [f"{_mname(S, m)} " + " / ".join(_pc(_m((cells.get(f"{m}|{c}") or {}).get("resolved"))) for c in conds)
            for m in models]
@@ -1033,7 +1033,7 @@ def hero(S: dict, out: Path):
     noise = " heavy tool-output noise," if layer == "a" else ""
     foot = (f"{LAYER_NAME[layer]}: one incident-debugging session,{noise} n = {_nrange(cells)} runs per point; "
             "band = 95% bootstrap interval.")
-    legend = [(Line2D([], [], color=STRAT_COLOR["compact"], lw=3, marker="o", ms=8, mec=SURFACE, mew=2), "Native compaction (default)"),
+    legend = [(Line2D([], [], color=STRAT_COLOR["compact"], lw=3, marker="o", ms=8, mec=SURFACE, mew=2), "Default compaction"),
               (Line2D([], [], color=STRAT_COLOR["compact_guided"], lw=3, marker="o", ms=8, mec=SURFACE, mew=2),
                "Compaction + keep-exact instructions"),
               (Line2D([], [], color=STRAT_COLOR["full"], lw=2.2, ls=(0, (4, 2.5))), "Full history (no compaction)")]

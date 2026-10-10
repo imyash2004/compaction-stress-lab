@@ -2,7 +2,7 @@
 
 Recordings of a real agent (SWE-agent, Llama-70B based) fixing real bugs, from the public dataset
 [`nebius/SWE-agent-trajectories`](https://huggingface.co/datasets/nebius/SWE-agent-trajectories) (CC-BY-4.0).
-Each recording is converted to native API tool calls, cut at about 85% (the real next step becomes a question),
+Each recording is converted to native API tool calls, cut 79–92% of the way through (the real next step becomes a question),
 and split into 4 equal parts. Questions about exact values were drafted by `gpt-6.1-sol` and kept only when code
 verified the answer word for word in a tool output and not in the bug report. With the full recording both models
 answer 99–100% of them.
@@ -12,7 +12,7 @@ Brackets show 95% intervals bootstrapped over the 12 sessions.
 
 ## The 12 sessions
 
-| Repository | Task | Agent actions | Tokens before the cut | Size group |
+| Repository | Task id in the dataset | Agent actions | Tokens before the cut | Size group |
 |---|---|---|---|---|
 | `CODAIT/exchange-metadata-converter` | 38 | 45 | 24,068 | short |
 | `Infinidat/munch` | 93 | 33 | 26,372 | medium |
@@ -26,6 +26,8 @@ Brackets show 95% intervals bootstrapped over the 12 sessions.
 | `python-babel/flask-babel` | 230 | 51 | 31,093 | long |
 | `simphony/simphony-remote` | 117 | 53 | 27,760 | medium |
 | `spdx/tools-python` | 467 | 55 | 30,794 | long |
+
+The exact sessions and questions are in [`inputs/real-sessions/`](../inputs/real-sessions/).
 
 ## Headline: every measure after one compaction
 

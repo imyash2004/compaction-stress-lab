@@ -23,7 +23,7 @@ RUNS = ROOT / "runs"
 OUT = ROOT / "reports" / "data"
 
 STRATS = ["full", "mask", "compact", "compact_guided"]
-STRAT_NAMES = {"full": "Full history", "mask": "Drop old tool outputs", "compact": "Native compaction",
+STRAT_NAMES = {"full": "Full history", "mask": "Drop old tool outputs", "compact": "Default compaction",
                "compact_guided": "Compaction + keep-exact instructions"}
 MEASURES = ["recall", "artifact", "continuation", "decision", "safety"]
 NOISES = ["light", "heavy", "extreme"]
@@ -60,6 +60,8 @@ def _wilson(k: int, n: int) -> dict:
 # ------------------------------------------------------------------------------------------------ layers A and B
 
 ADJUDICATION = ROOT / "data" / "safety_adjudication.json"
+if not ADJUDICATION.exists():  # fresh clone: the committed copy
+    ADJUDICATION = ROOT / "inputs" / "safety_adjudication.json"
 
 
 def adjudication() -> dict:

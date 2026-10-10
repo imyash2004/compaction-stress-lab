@@ -5,9 +5,11 @@
 Long-running agents outgrow their context window, so the API summarizes the conversation and the agent continues
 from the summary. Anthropic and OpenAI both offer this natively as **compaction**. This repo measures what survives
 it: exact values, files, reasons, next steps, and whether the agent still acts correctly. We tested two popular
-low-cost models, **Claude Haiku 5.5** and **GPT-6 Luna**, across **628 runs** in three layers of evidence.
+small models, **Claude Haiku 5.5** and **GPT-6 Luna**, across **628 runs** in three layers of evidence.
 
 📊 **Results:** [`findings/`](findings/README.md), with one explained page per layer, every chart and all the data.
+📚 **New here?** [`docs/`](docs/README.md) explains where the data came from, how the code fits together, the real
+bugs the agent fixed, every prompt word for word, and one worked example per layer.
 
 ![Facts remembered after repeated compaction](findings/charts/hero.png)
 
@@ -20,9 +22,9 @@ low-cost models, **Claude Haiku 5.5** and **GPT-6 Luna**, across **628 runs** in
 | 1 | **One compaction keeps about 1 in 5 exact details.** Line numbers, counts and error names the tools printed: 99–100% with full history, **19–20%** after one compaction. | 12 real agent sessions |
 | 2 | **Every extra compaction compounds the loss.** GPT-6 Luna: 67% → 48% → 30% → **23%** over 4 compactions, losing about a third of what was left each time. | Controlled lab |
 | 3 | **Summaries keep what was discussed, not what was printed.** Facts the agent stated: 79–91% kept. Facts only in tool output: **24–31%**. | Controlled lab |
-| 4 | **One paragraph of instructions is the biggest lever.** "Keep exact values" roughly doubled exact recall on real sessions (19–20% → **41–48%**) and slowed the decay per compaction (Luna: 69% → 89% kept). | All layers |
-| 5 | **Agents rarely lie, but forgotten facts become wrong actions.** 90–97% of lost values were answered "UNKNOWN", yet **7 of 72** rollout plans written after compaction used an outdated value (old DB port, revoked secret, broken release). With full history: 0 of 36. | Controlled lab, hand-reviewed |
-| 6 | **A live agent still fixes the bug, but works harder.** Fix rates did not change measurably on 10 SWE-bench bugs, but under harsh compaction Luna took **56% more steps**, re-read files ~9 times per task and ran out of steps in 5 of 20 attempts. | Live agent in Docker |
+| 4 | **One paragraph of instructions is the biggest lever.** "Keep exact values" roughly doubled exact recall on real sessions (19–20% → **41–48%**) and slowed the decay: the share Luna kept per extra compaction rose from 69% to 89%. | Layers 1–2 (in layer 3 it cut steps, not failures) |
+| 5 | **Agents rarely lie, but forgotten facts become wrong actions.** 90–97% of lost values were answered "UNKNOWN", yet when asked to write the production rollout plan, **7 of 72** plans written after compaction used an outdated value (old DB port, revoked secret, broken release). Without compaction (full history or dropped outputs): 0 of 36. | Controlled lab, hand-reviewed |
+| 6 | **A live agent still fixes the bug, but works harder.** Fix rates did not change measurably on 10 SWE-bench bugs, but under harsh compaction (every 6,000 characters) Luna took **56% more steps**, re-read files ~9 times per task and ran out of steps in 5 of 20 attempts. | Live agent in Docker |
 
 ---
 
@@ -36,7 +38,8 @@ low-cost models, **Claude Haiku 5.5** and **GPT-6 Luna**, across **628 runs** in
 | Custom instructions | `instructions` | `instructions` |
 | Automatic mode | `context_management` edit `compact_20260112` | `context_management: [{"type": "compaction", "compact_threshold": N}]` |
 
-On OpenAI, on-demand and automatic compaction gave the same quality when triggered at the same point (72% vs 71%).
+On OpenAI, on-demand and automatic compaction gave the same quality when triggered at the same point (72% vs 71% in an
+earlier 10-model run with one repeat; see [`DESIGN.md`](DESIGN.md) §14).
 
 ## What we tested
 
@@ -53,12 +56,15 @@ On OpenAI, on-demand and automatic compaction gave the same quality when trigger
 - **Default compaction.**
 - **Keep-exact compaction:** default compaction plus one paragraph of instructions.
 
+*In the code, layers 1/2/3 are `a`/`b`/`c` and the strategies are `full`, `mask`, `compact` and `compact_guided`.
+Every term is defined in [`findings/README.md`](findings/README.md#terms).*
+
 **Measures:**
 
 - recall (exact match);
 - files edited;
 - next step and rollout plan;
-- the reasons behind decisions (judge 0/1/2);
+- the reasons behind decisions (graded 0/1/2 by `gpt-6.1-sol` against the recorded reason);
 - safety (rule checks, hand-reviewed);
 - honesty (admitted vs wrong);
 - live: bug fixed (hidden tests), re-reads, steps, rules kept.
@@ -126,6 +132,7 @@ compaction-stress-lab/
 ├── README.md                ← you are here
 ├── DESIGN.md                ← architecture, sequence diagrams, scenario, scoring, fairness rules
 ├── findings/                ← results: one explained page per layer, charts, data
+├── docs/                    ← data sources, code map, the 10 real bugs, every prompt, worked examples
 ├── lab/
 │   ├── scenario.py          ← lab story, 29 facts and traps, decisions, rollout-plan rules
 │   ├── noise.py             ← realistic noisy tool output (logs, tracebacks, pip, kubectl, pytest…)
@@ -136,10 +143,14 @@ compaction-stress-lab/
 │   ├── study.py             ← runner for layers 1 and 2: plan | run | score | status
 │   ├── replay.py            ← layer 2: fetch, convert, cut and build verified questions from real sessions
 │   ├── live/                ← layer 3: tasks.py (SWE-bench → Docker images), sandbox.py, agent.py (live loop)
-│   ├── aggregate.py · figures.py · findings.py   ← numbers → charts → findings/
-│   └── run.py · report.py · extract.py           ← 10-model comparison runner
+│   ├── aggregate.py · figures.py · findings.py · docs.py   ← numbers → charts → findings/ and docs/
+│   ├── run.py · report.py                        ← runner for the earlier 10-model comparison
+│   └── extract.py                                ← side experiment: probing what an encrypted OpenAI summary holds
 ├── tests/                   ← offline tests (no API calls)
-└── run_layer_*.sh           ← the exact commands used for the runs
+├── inputs/                  ← the exact inputs: 12 real sessions + questions, 10 live bugs, safety verdicts
+├── run_layer_ab.sh          ← layer 1 retries, all layer 2 runs, scoring
+├── run_layer_c*.sh          ← layer 3 at 24k/12k (c), 6k (c_6k), and re-runs of rate-limited attempts (c_retry)
+└── run_stage_a.sh           ← the earlier 10-model comparison
 ```
 
 ## Reproduce
@@ -147,10 +158,21 @@ compaction-stress-lab/
 **Requirements:**
 
 - Python 3.13.
-- Docker, for layer 3.
+- Docker, for layer 3. Images are built locally from public GitHub repos (network needed; about 400 MB each, ~4 GB for
+  the 10 bugs). The Dockerfiles target `python:3.9-slim`, so they build on arm64 and x86.
 - API access to:
-  - Anthropic, for `claude-haiku-5-5`;
-  - an Azure OpenAI / Microsoft Foundry resource, for `gpt-6-luna` and `gpt-6.1-sol`.
+  - Anthropic, for `claude-haiku-5-5` (`ANTHROPIC_API_KEY`, `CLAUDE_BACKEND=anthropic`);
+  - an Azure OpenAI / Microsoft Foundry resource with deployments named exactly `gpt-6-luna` and `gpt-6.1-sol`
+    (`AZURE_OPENAI_ENDPOINT`, `AZURE_API_KEY`). The deployment name is used as the model name.
+
+**No API keys?** You can still read everything in `findings/`, `docs/` and `inputs/`, run the offline tests, and redraw
+every chart from the committed numbers:
+
+```bash
+python -m lab.figures --summary findings/data/summary.json --out /tmp/charts   # after installing requirements.txt
+```
+
+**Full reproduction:**
 
 ```bash
 python -m venv .venv && .venv/bin/pip install -r requirements.txt
@@ -168,20 +190,28 @@ cp .env.example .env          # fill in ANTHROPIC_API_KEY, AZURE_OPENAI_ENDPOINT
 .venv/bin/python -m lab.live.tasks select && .venv/bin/python -m lab.live.tasks build && .venv/bin/python -m lab.live.tasks validate
 ./run_layer_c.sh && ./run_layer_c_6k.sh                  # 24k, 12k and 6k pressure, 2 attempts each
 
-# Numbers, charts, findings
-.venv/bin/python -m lab.aggregate && .venv/bin/python -m lab.figures && .venv/bin/python -m lab.findings
+# Numbers, charts, findings, docs
+.venv/bin/python -m lab.aggregate && .venv/bin/python -m lab.figures && .venv/bin/python -m lab.findings && .venv/bin/python -m lab.docs
 ```
 
 **Notes:**
 
-- Runs resume where they stopped.
-- Rate-limited calls are retried.
-- The raw per-run data (`runs/`, `results/`, `data/`) is regenerated locally and not committed.
+- **Exact inputs:** `lab.replay build` asks `gpt-6.1-sol` to write the layer 2 questions, so a rebuild gives different
+  questions. To reuse the exact sessions and questions we used, copy `inputs/real-sessions/*.json` to `data/cases/`
+  instead. `inputs/live-tasks.json` is the layer 3 bug list; `inputs/safety_adjudication.json` holds the hand-review
+  verdicts for flagged rollout plans (new runs need a new review).
+- **Time:** layers 1 and 2 take about 1–2 hours with 4 workers; layer 3 (280 runs) takes about 3 hours with 3 workers.
+- **Resume and retries:** runs resume where they stopped; rate-limited calls are retried.
+- **The last line** (aggregate → figures → findings → docs) only works after a full local run. It refuses to touch
+  `findings/` or `docs/` otherwise.
+- **Not committed:** the raw downloads and per-run outputs (`data/`, `runs/`, `results/`).
 
 ## Limits
 
-- **Two low-cost models.** Larger models compact better (in an earlier run, `gpt-6.1-sol` with instructions kept
-  about 99%).
+- **Two small models.** Larger models compact better (in the earlier 10-model run, `gpt-6.1-sol` with instructions
+  kept about 99%; see [`DESIGN.md`](DESIGN.md) §14).
+- **OpenAI's `instructions` parameter** for `responses.compact` is not documented as steering compaction, though it
+  measurably did.
 - **Live bugs are short** (7–15 steps), so compaction was forced early with low triggers. Longer tasks will likely
   show larger effects.
 - **Real-session questions were drafted by an AI,** then verified by code and gated with full-history answers. The

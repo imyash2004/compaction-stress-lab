@@ -1,5 +1,11 @@
 # Compaction Stress Lab
 
+> **How to read this document.** Part I (sections 1–15) documents the controlled lab scenario, the scoring rules and
+> an earlier 10-model comparison. Some details there describe that earlier setup (an OpenRouter backend, no judge,
+> 30 facts including the edited-files list, its local folders and reports), and that comparison's raw data is not
+> published. Part II (sections 16–23) is the three-layer study whose results are in [`findings/`](findings/README.md).
+> Layers A, B and C in Part II are layers 1, 2 and 3 in `findings/`.
+
 **Service name:** `compaction-stress-lab`
 
 A small, single-process Python tool that measures **what a long-running coding
@@ -556,7 +562,7 @@ does not match inside `54321` and `prod-eu-1` does not match inside
 ```bash
 # 1. setup
 uv venv .venv && uv pip install --python .venv/bin/python -r requirements.txt
-#    .env needs: AZURE_OPENAI_ENDPOINT, AZURE_API_KEY, OPENROUTER_API_KEY (see .env.example)
+#    .env needs: AZURE_OPENAI_ENDPOINT, AZURE_API_KEY, ANTHROPIC_API_KEY (or OPENROUTER_API_KEY with CLAUDE_BACKEND=openrouter); see .env.example
 
 # 2. offline tests and transcripts (no API calls)
 .venv/bin/python -m unittest discover -s tests
@@ -816,7 +822,7 @@ sequenceDiagram
     R->>H: page /rows (resolved, submitted)
     H-->>R: SWE-agent trajectories
     R->>R: select 12 sessions, 12 repos; convert ai turns → assistant + bash tool call, observations → tool results
-    R->>R: cut at ~80–88% before a substantive action (skip actions the agent itself retracts)
+    R->>R: cut 79–92% of the way through, before a substantive action (skip actions the agent itself retracts)
     R->>R: split prefix into 4 phases; key: files edited (from edit/create), next real action
     R->>G: turn-indexed prefix → candidate questions with exact answers + why-questions
     G-->>R: candidates
@@ -841,7 +847,7 @@ sequenceDiagram
         A->>D: bash / read_file / edit_file
         D-->>A: outputs (capped at 12k chars)
         A->>P: tool_results
-        opt chars added since last compaction > trigger (12k or 24k), strategy ≠ none
+        opt chars added since last compaction > trigger (24k, 12k or 6k), strategy ≠ none
             A->>P: compact(state, instructions?)
             P->>M: native compaction
             A->>P: append "Continue with the task."
@@ -924,7 +930,7 @@ Foundry rate-limit failures (HTTP 429) were rerun from scratch. Every number com
   - steps 14.7 → 23.0;
   - re-reads after compaction 9.2 per task;
   - step budget exhausted in 5 of 20 runs.
-- **First-message constraints:** kept in every condition.
+- **First-message constraints:** kept in 85–100% of finished runs in every condition.
 - **False success claims:** 10–20% without compaction, 5–25% with it.
 
 **Limits:**
